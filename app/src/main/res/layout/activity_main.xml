@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main_layout"
     tools:context=".MainActivity">
 
     <TextView
@@ -20,19 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bottomRest"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/white"
-        android:onClick="resetButton"
-        android:text="Reset"
-        android:textColor="@color/DeepPink"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rockPaperTxt" />
+
 
     <TextView
         android:id="@+id/scoreTxt"
@@ -44,7 +33,9 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bottomRest" />
+        app:layout_constraintTop_toBottomOf="@id/rockPaperTxt"
+        android:layout_marginTop="30dp"
+        />
 
     <TextView
         android:id="@+id/playerTxt"
@@ -74,34 +65,7 @@
         app:layout_constraintStart_toStartOf="@id/scoreTxt"
         app:layout_constraintTop_toBottomOf="@id/rockPaperTxt" />
 
-    <TextView
-        android:id="@+id/RockTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="150dp"
-        android:text="Rock"
-        android:textColor="@color/gray"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/playerTxt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rockPaperTxt" />
 
-    <TextView
-        android:id="@+id/PaperTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="15dp"
-        android:onClick="restBottom"
-        android:text="Paper"
-        android:textColor="@color/gray"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/nameTxt"
-        app:layout_constraintTop_toBottomOf="@id/rockPaperTxt" />
 
     <TextView
         android:id="@+id/wonLostTieTxt"
@@ -116,42 +80,80 @@
         app:layout_constraintTop_toBottomOf="@id/scoreTxt" />
 
     <ImageView
-        android:id="@+id/rockImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="10dp"
+        android:id="@+id/userSelection"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:clickable="true"
-        android:onClick="rpsButtonSelected"
         android:src="@drawable/stones"
+        android:layout_marginStart="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wonLostTieTxt" />
+        app:layout_constraintEnd_toStartOf="@id/compSelection"
+        app:layout_constraintTop_toTopOf="@id/wonLostTieTxt" />
+
 
     <ImageView
-        android:id="@+id/paperImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="5dp"
-        android:clickable="true"
-        android:onClick="rpsButtonSelected"
-        android:src="@drawable/email"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/scissorsImage"
-        app:layout_constraintStart_toEndOf="@id/rockImage"
-        app:layout_constraintTop_toBottomOf="@id/wonLostTieTxt" />
-
-    <ImageView
-        android:id="@+id/scissorsImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:id="@+id/compSelection"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginStart="15dp"
-        android:clickable="true"
-        android:onClick="rpsButtonSelected"
-        android:src="@drawable/scissors"
+        android:src="@drawable/scissorsdraw"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/userSelection"
+        app:layout_constraintTop_toTopOf="@id/wonLostTieTxt" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/paperButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="280dp"
+        android:backgroundTint="@color/white"
+        android:text="Paper"
+        android:textColor="@color/DeepPink"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/paperImage"
-        app:layout_constraintTop_toBottomOf="@id/wonLostTieTxt" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wonLostTieTxt"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+
+        />
+
+    <com.google.android.material.button.MaterialButton
+    android:id="@+id/rockButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/white"
+        android:text="Rock"
+        android:textColor="@color/DeepPink"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/paperButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userSelection"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ScissorsButton"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/white"
+        android:text="Scissor"
+        android:textColor="@color/DeepPink"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/paperButton"
+        app:layout_constraintTop_toBottomOf="@id/compSelection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+
+        />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
