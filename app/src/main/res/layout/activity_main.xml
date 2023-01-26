@@ -98,7 +98,7 @@
 
     <ImageView
         android:id="@+id/userSelection"
-        android:layout_width="150dp"
+        android:layout_width="151dp"
         android:layout_height="150dp"
         android:clickable="true"
         android:src="@drawable/stones"

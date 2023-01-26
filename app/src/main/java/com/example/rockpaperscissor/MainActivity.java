@@ -13,11 +13,9 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     TextView scoreTextview,compScoreTxt;
-    int Score = 0, compScore= 0;
+    int Score = 0, compScore=0;
     Button Rock, paper, scissors;
     ImageView userSelection, compSelection;
-
-    //Random random;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userSelection.setImageResource(R.drawable.stones);
-                String message = play_turn("Rock");
+                String message = play_turn("rock");
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
                 scoreTextview.setText(Integer.toString(Score) );
                 compScoreTxt.setText(Integer.toString(compScore));
@@ -82,14 +80,14 @@ public class MainActivity extends AppCompatActivity {
         int computerChoiceNumber = random.nextInt(3) + 1;
 
         if (computerChoiceNumber == 1) {
-            computer_choice = "Rock";
+            computer_choice = "rock";
         } else if (computerChoiceNumber == 2) {
 
             computer_choice = "Scissor";
         } else if (computerChoiceNumber == 3) {
             computer_choice = "Paper";
         }
-        if (computer_choice == "Rock") {
+        if (computer_choice == "rock") {
             compSelection.setImageResource(R.drawable.stones);
         } else if (computer_choice == "Scissor") {
             compSelection.setImageResource(R.drawable.scissorsdraw);
@@ -102,25 +100,25 @@ public class MainActivity extends AppCompatActivity {
         if (computer_choice == player_choice) {
             return "Tie";
 
-        } else if (player_choice == "Rock" && computer_choice == "Scissor") {
+        } else if (player_choice == "rock" && computer_choice == "Scissor") {
             Score++;
             return "Win";
         } else if (player_choice == "Scissor" && computer_choice == "Paper") {
             Score++;
             return "Win";
-        } else if (player_choice == "Scissor" && computer_choice == "Rock") {
+        } else if (player_choice == "Scissor" && computer_choice == "rock") {
             compScore++;
             return "Lost";
-        } else if (player_choice == "Paper" && computer_choice == "Rock") {
+        } else if (player_choice == "Paper" && computer_choice == "rock") {
             Score++;
             return "Win";
         } else if (player_choice == "Paper" && computer_choice == "Scissor") {
             compScore++;
             return "Lost";
-        } else if (player_choice == "Rock" && computer_choice == "Paper") {
+        } else if (player_choice == "rock" && computer_choice == "Paper") {
             compScore++;
             return "Lost";
-        } else if (player_choice == "Scissor" && computer_choice == "Rock") {
+        } else if (player_choice == "Scissor" && computer_choice == "rock") {
             compScore++;
             return "Lost";
         } else
