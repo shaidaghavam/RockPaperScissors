@@ -1,7 +1,5 @@
 package com.example.rockpaperscissor;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,11 +12,8 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
-
-
-    TextView scoreTextview;
-    int Score = 0,compScore;
+    TextView scoreTextview,compScoreTxt;
+    int Score = 0, compScore= 0;
     Button Rock, paper, scissors;
     ImageView userSelection, compSelection;
 
@@ -30,11 +25,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        scoreTextview = findViewById(R.id.scoreTxt);
+        scoreTextview =(TextView) findViewById(R.id.scoreTxt);
+        compScoreTxt= (TextView) findViewById(R.id.userscoreTxt);
         Rock = (Button) findViewById(R.id.rockButton);
         paper = (Button) findViewById(R.id.paperButton);
         scissors = (Button) findViewById(R.id.ScissorsButton);
-        // userSelection=(ImageView)  findViewById(R.id)
+        userSelection=(ImageView)  findViewById(R.id.userSelection);
+        compSelection=(ImageView) findViewById(R.id.compSelection);
 
 
         paper.setOnClickListener(new View.OnClickListener() {
@@ -42,13 +39,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 userSelection.setImageResource(R.drawable.email);
                 String message = play_turn("Paper");
-                Intent reg_intent = new Intent( MainActivity.this, MainActivity.class);
-                startActivity(reg_intent);
-                Toast.makeText(MainActivity.this,message,Toast.LENGTH_SHORT).show();
-                scoreTextview.setText(Integer.toString(Score)+ Integer.toString(compScore));
-
-
-
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                scoreTextview.setText(Integer.toString(Score) );
+                compScoreTxt.setText(Integer.toString(compScore));
             }
         });
 
@@ -57,30 +50,28 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 userSelection.setImageResource(R.drawable.stones);
                 String message = play_turn("Rock");
-                Intent reg_intent = new Intent( MainActivity.this, MainActivity.class);
-                startActivity(reg_intent);
-                Toast.makeText(MainActivity.this,message,Toast.LENGTH_SHORT).show();
-                scoreTextview.setText(Integer.toString(Score)+ Integer.toString(compScore));
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                scoreTextview.setText(Integer.toString(Score) );
+                compScoreTxt.setText(Integer.toString(compScore));
+
 
             }
         });
-
 
         scissors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 userSelection.setImageResource(R.drawable.scissorsdraw);
-                 String message = play_turn("Scissor");
-                Intent reg_intent = new Intent( MainActivity.this, MainActivity.class);
-                startActivity(reg_intent);
-                Toast.makeText(MainActivity.this,message,Toast.LENGTH_SHORT).show();
-                scoreTextview.setText(Integer.toString(Score)+ Integer.toString(compScore));
+                String message = play_turn("Scissor");
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                scoreTextview.setText(Integer.toString(Score));
+                compScoreTxt.setText(Integer.toString(compScore));
+
 
 
             }
         });
 
-        //  random = new Random();
 
 
     }
@@ -114,97 +105,25 @@ public class MainActivity extends AppCompatActivity {
         } else if (player_choice == "Rock" && computer_choice == "Scissor") {
             Score++;
             return "Win";
-        }
-        else if (player_choice == "Scissor" && computer_choice == "Paper") {
-            compScore++;
-            return "Lost";
-        }
-
-        else if (player_choice == "Scissors" && computer_choice == "Rock") {
-            compScore++;
-            return "Lost";
-        }
-        else if (player_choice == "Scissors" && computer_choice == "Paper") {
+        } else if (player_choice == "Scissor" && computer_choice == "Paper") {
             Score++;
             return "Win";
-        }
-        else if (player_choice == "Paper" && computer_choice == "Rock") {
-            Score++;
-            return "Win";
-        }
-        else if (player_choice == "Paper" && computer_choice == "Scissor") {
+        } else if (player_choice == "Scissor" && computer_choice == "Rock") {
             compScore++;
             return "Lost";
-        }
-        else return "Something is wrong";
-   /* public void rpsButtonSelected(View view) {
-
-         int userSelection = Integer.parseInt(view.getTag().toString());
-        Log.i(TAG, "rpsButtonSelected" + userSelection);
-        matchGame(userSelection);
-
-    }*/
-
-   /* private void matchGame(int userSelection) {
-
-        int low = 1;
-        int high = 3;
-
-        int compSelection = random.nextInt(high) + low;
-
-        if (userSelection == compSelection) {
-            wonLostTie.setText("Tie");
-            //Tie
-        } else if ((userSelection - compSelection) % 3 == 1) {
-            userScore++;
-            wonLostTie.setText("Win");
-
-            //User Win
-        } else {
+        } else if (player_choice == "Paper" && computer_choice == "Rock") {
+            Score++;
+            return "Win";
+        } else if (player_choice == "Paper" && computer_choice == "Scissor") {
             compScore++;
-            wonLostTie.setText("Lost");
-
-            //Comp win
-        }
-        switch (userSelection) {
-            case 1:
-                userSelectionTextview.setText("Rock");
-                break;
-
-            case 2:
-                userSelectionTextview.setText("Paper");
-                break;
-
-            case 3:
-                userSelectionTextview.setText("Scissor");
-                break;
-
-
-        }
-
-        switch (compSelection) {
-            case 1:
-                compSelectionTextview.setText("Rock");
-                break;
-
-            case 2:
-                compSelectionTextview.setText("Paper");
-                break;
-
-            case 3:
-                compSelectionTextview.setText("Scissor");
-                break;
-        }
-        setScoreTextView(userScore,compScore);
+            return "Lost";
+        } else if (player_choice == "Rock" && computer_choice == "Paper") {
+            compScore++;
+            return "Lost";
+        } else if (player_choice == "Scissor" && computer_choice == "Rock") {
+            compScore++;
+            return "Lost";
+        } else
+            return "Something is wrong";
     }
-
-        private void setScoreTextView(int userScore,int compScore){
-
-            scoreTextview.setText(String.valueOf(userScore) + " : " + String.valueOf(compScore));
-
-        }*/
-
-
     }
-}
-

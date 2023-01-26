@@ -27,27 +27,44 @@
         android:id="@+id/scoreTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0:0"
+        android:text="0"
         android:textColor="@color/nilli"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/userscoreTxt"
         app:layout_constraintTop_toBottomOf="@id/rockPaperTxt"
         android:layout_marginTop="30dp"
         />
+
+    <TextView
+        android:id="@+id/userscoreTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/nilli"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/scoreTxt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rockPaperTxt"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        />
+
+
 
     <TextView
         android:id="@+id/playerTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="95dp"
-        android:layout_marginEnd="30dp"
-        android:text="YOU"
+        android:layout_marginEnd="100dp"
+        android:text="Comp"
         android:textColor="@color/darkPhirooze"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/scoreTxt"
+        app:layout_constraintEnd_toEndOf="@id/compSelection"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rockPaperTxt" />
 
@@ -57,12 +74,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="95dp"
-        android:text="Comp"
+        android:text="You"
         android:textColor="@color/darkPhirooze"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/scoreTxt"
+        app:layout_constraintStart_toStartOf="@id/userscoreTxt"
         app:layout_constraintTop_toBottomOf="@id/rockPaperTxt" />
 
 
